@@ -45,13 +45,14 @@ describe LinkedStack do
 		@empty_stack.empty?.must_equal true
 	end
 
-
-
-
-	it 'can tell when it is empty?' do
+	it "accepts as initializing value" do
+		@non_empty_stack = LinkedStack.new @value1
+		@non_empty_stack.top.must_equal @value1
+	end
+	
+	it "accepts as initializing values" do
+		@non_empty_stack = LinkedStack.new @value1, @value2
+		@non_empty_stack.top.must_equal @value2
 	end
 
-
-
-	
 end
