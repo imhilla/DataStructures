@@ -1,1 +1,1 @@
-puts "Tests for implementation of Sets in ruby - linked list option"
+puts "Tests for implementation of Sets in Ruby - linked list option"
