@@ -44,5 +44,11 @@ As conditions:
 Note that the internal conditions are internal, therefore (per POODR convention) they are not reported in the testing - even though they are indirectly tested via the public functionality.
 
 
+####Using stacks to solve recursion problems
+An interesting truth hidden in the eye of the sun is the fact that recursion (= fuction that call themselves) can be implemented as stacks. I have made and attempt to this to solve an easy enough problen: the factorial.
+
+Yes, I know that this can be easily solved via a normal recursion, but this is academic and didactic. Plus, it is fun.
+
+
 [website0]: http://w3.cs.jmu.edu/spragunr/CS240/ConciseNotes.pdf
 [website1]:http://andreahk5.github.io/blog/2014/03/26/poodr-notes-from-chapter-1/
