@@ -28,6 +28,14 @@ class LinkedList
 		delete_value_at_location(index)
 	end
 
+	def first_occurrence_of(value)
+		retrieve_first_index_of(value)
+	end
+
+	def is_equal_to?(list)
+		compare_with_list(list)
+	end
+
 	private
 
 	def default_node
@@ -194,6 +202,21 @@ class LinkedList
 		update_cursor(value: tail.value,index: (size-1))
 	end
 
+	def retrieve_first_index_of(value)
+		current_node = head
+		index = false
+		for i in 0..(size-1)
+			if current_node.value == value
+				index = i
+				break
+			end
+			current_node = current_node.next_node
+		end
+		index
+	end
+
+
+
 
 	def search_out_of_bounds?(index)
 		if index > (size-1)
@@ -232,6 +255,50 @@ class LinkedList
 		@cursor_index = args[:index]
 		@cursor_node = args[:node]
 	end
+
+	def compare_with_list(list)
+		unless is_a_list?(list)
+			raise ArgumentError, "The argument given is not a #{self.class}"
+		end
+
+		if !preliminary_comparison(list)
+			false
+		else
+			full_comparison(list)
+		end
+	end
+	
+	def is_a_list?(list)
+		list.class == self.class
+	end
+
+	def preliminary_comparison(list)
+		if list.size != size
+			false
+		elsif list.head.value != head.value
+			 false
+		elsif list.tail.value != tail.value
+			 false
+		else
+			true
+		end
+	end
+
+	def full_comparison(list)
+		status = true
+		current_node = head
+		other_current_node = list.head
+		for i in 0..(size-1)
+			if current_node.value != other_current_node.value
+				status = false
+				break
+			end
+			current_node = current_node.next_node
+			other_current_node = other_current_node.next_node
+		end
+		status
+	end
+
 
 end
 
