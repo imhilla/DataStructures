@@ -12,6 +12,14 @@ This repository is a bit of a work in progress - scrapbook of my trials, testng 
 
 AC
 
+###Dispensers
+Containers that are not traversable (no access) are also called dispensers.
+
+The basic public interfaces (to use a POODR definition) includes:
+* empty?
+* size
+* clear
+
 ####First episode:the stack
 Stack is a non traversable dispenser, which implement the basic container interface and, in addition, a few interesting methods.
 
@@ -48,6 +56,52 @@ Note that the internal conditions are internal, therefore (per POODR convention)
 An interesting truth hidden in the eye of the sun is the fact that recursion (= fuction that call themselves) can be implemented as stacks. I have made and attempt to this to solve an easy enough problen: the factorial.
 
 Yes, I know that this can be easily solved via a normal recursion, but this is academic and didactic. Plus, it is fun.
+
+
+###Collections
+Containers that are traversable are also called collections.
+On top of the standard messages that Dispensers can take,collection can take a few more basic interfaces:
+
+* size?
+* empty?
+* iterator
+* contains?()
+* equal()
+
+####Iteration
+
+Iterations might be implemented in different ways. The first division is:
+
+* **internal** when the collection controls the iteration over its own elements.
+* **external** when the iteration is controller externally by the caller.
+
+Also, the implementation of the iteration might be in different places in the code:
+
+* In the **language** - in our case, in Ruby.
+* In the **collection** - I guess this is the implementation that Sandy Metz would like the most - out of POODR.
+* In a **iteration object**, that most likely is a mixing of iterating that can be added to the class. In Ruby, this is done with the <code>Enumerable</code> module
+
+####Lists
+
+An ordered collection.
+
+It is a subset of Collection, which is a subset of Container. Therefore the messages that the ADT needs to implement are:
+
+* size?
+* insert_at
+* delete_at
+* value _at
+* replace_value_at
+* Index_of_element (the first occurrence)
+* slice
+* equality among lists.
+
+Some tips on the implementation:
+
+* it has a head method, that indicates if the list is empty.
+* 
+
+
 
 
 [website0]: http://w3.cs.jmu.edu/spragunr/CS240/ConciseNotes.pdf
