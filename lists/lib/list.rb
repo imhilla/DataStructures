@@ -62,7 +62,7 @@ class LinkedList
 				previous_node = current_node
 				increase_size
 			end
-			@tail = add_node(	value: value,
+			self.tail = add_node(	value: value,
 									previous_node: previous_node, 
 									next_node: nil)
 			previous_node.next_node = tail
@@ -84,7 +84,7 @@ class LinkedList
 			previous_node = current_node
 			increase_size
 		end
-		@tail = add_node(	value: value,
+		self.tail = add_node(	value: value,
 								previous_node: previous_node, 
 								next_node: nil)
 		previous_node.next_node = tail
@@ -228,11 +228,11 @@ class LinkedList
 
 
 	def increase_size
-		@size = size + 1
+		self.size = size + 1
 	end
 
 	def decrease_size
-		@size = size - 1
+		self.size = size - 1
 	end
 
 	def is_empty?
@@ -252,8 +252,8 @@ class LinkedList
 	end
 
 	def update_cursor(args)
-		@cursor_index = args[:index]
-		@cursor_node = args[:node]
+		self.cursor_index = args[:index]
+		self.cursor_node = args[:node]
 	end
 
 	def compare_with_list(list)
