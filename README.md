@@ -8,7 +8,6 @@ So I decided to dig into it and to actually go the extra step in implementing so
 
 This repository is a bit of a work in progress - scrapbook of my trials, testng and - mostly- having fun doing it. All the data types are integrated as lists, even though in some cases maybe arrays could be better (depending on the big O notation - as smart people would say).
 
-Little change
 
 
 AC
