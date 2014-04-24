@@ -107,6 +107,12 @@ Quick and dirty implementation of bubble sorting in TDD. Bubble makes multiple p
 **Selection sorting**
 Still O(n2), this time by saving in a variable on each pass the largest element. Small improvement.
 
+**Insertion sorting**
+Still in the O(n2), this is supposed to be the way people sort paper (interesting).
+
+**shell sorting**
+This seems like a very pretty but recoursive inseriton sorting, with starting value decreasing from size/9 by one third at the time.
+
 
 
 
