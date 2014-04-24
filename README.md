@@ -99,7 +99,15 @@ It is a subset of Collection, which is a subset of Container. Therefore the mess
 Some tips on the implementation:
 
 * it has a head method, that indicates if the list is empty.
-* 
+
+####Sorting
+**Bubble sorting**
+Quick and dirty implementation of bubble sorting in TDD. Bubble makes multiple passes on the array and swaps elements if they are out of ourder. Being Big Oh of n2, is not that groovy though.
+
+**Selection sorting**
+Still O(n2), this time by saving in a variable on each pass the largest element. Small improvement.
+
+
 
 
 
