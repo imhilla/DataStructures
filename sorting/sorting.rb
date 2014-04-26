@@ -134,5 +134,5 @@ class ArraySorting
 		end
 		partition(a.take(pivot))+partition(a.drop(pivot))
 	end
-
 end
+

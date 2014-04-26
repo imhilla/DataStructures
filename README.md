@@ -123,6 +123,8 @@ We are talking real business now (apparenty professionals use this sort of sorti
 
 It's a O(nlog(n)) grulli.
 
+Found a snag on the impementation of this one, it comes up only every now and again - will need to tune it up. Stay tuned!
+
 
 [website0]: http://w3.cs.jmu.edu/spragunr/CS240/ConciseNotes.pdf
 [website1]:http://andreahk5.github.io/blog/2014/03/26/poodr-notes-from-chapter-1/

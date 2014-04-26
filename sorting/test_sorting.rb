@@ -1,4 +1,6 @@
+require 'rubygems'
 require 'minitest/autorun'
+require 'minitest/benchmark'
 require_relative 'sorting.rb'
 
 describe ArraySorting do 
@@ -11,13 +13,14 @@ describe ArraySorting do
 		@sorted_array.first.must_equal 1
 		@sorted_array[4].must_equal 5
 		@sorted_array.last.must_equal 88
+
 	end
 
 	it 'selection sorts through arrays' do
 		@sorted_array = @array.selection_sort!
 		@sorted_array.first.must_equal 1
 		@sorted_array[4].must_equal 5
-		@sorted_array.last.must_equal 88		
+		@sorted_array.last.must_equal 88	
 	end
 
 	it 'does insertion sort' do
