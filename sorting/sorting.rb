@@ -108,4 +108,31 @@ class ArraySorting
 		[a.take(mid), a.drop(mid)]
 	end
 
+
+	def quick_sort!
+		@array = partition(array)
+		array
+	end
+
+	def partition(a)
+		return a if a.size <= 1
+		pivot = rand(0..(a.size-1))
+		left = 0
+		right = a.size - 1
+		while left <= pivot && right >= pivot 
+			if a[left] < a[pivot]
+				left += 1
+			else
+				if a[right] >= a[pivot]
+					right -= 1
+				else
+					a[left], a[right] = a[right], a[left]
+					left += 1
+					right -= 1
+				end
+			end	
+		end
+		partition(a.take(pivot))+partition(a.drop(pivot))
+	end
+
 end

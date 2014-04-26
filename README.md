@@ -1,16 +1,14 @@
-###Personal notes, scruff trials and similar on Data structures
+###Personal notes, scruff trials and similar on 
+##Data structures and Algorithms
 
 In my quest for knowledge and wisdom in the realm of web development ad Ruby on Rails, I stumbled across the "Concise Notes on Data Structures and Algorithms - Ruby Edition" by Christopher Fox of James Madison University [link][website0].
 
-It seemed to me like a fine read to deepen my knowledge fo data structures. In some cases you can tell Christopher is more into some other languages (the use of calem case ILO snake case, the lack of real OOD as per [Sandi Metz bible][website1]), but this does not defeat the purpose of the notes. They are pretty awesomem and deserve some good time reading.
+It seemed to me like a fine read to deepen my knowledge fo data structures.  In some cases you can tell Christopher is more into some other languages (the use of calem case ILO snake case, the lack of real OOD as per [Sandi Metz bible][website1]), but this does not defeat the purpose of the notes. They are pretty awesomem and deserve some good time reading.
 
 So I decided to dig into it and to actually go the extra step in implementing some of the data structures - obviously in TDD.
 
-This repository is a bit of a work in progress - scrapbook of my trials, testng and - mostly- having fun doing it. All the data types are integrated as lists, even though in some cases maybe arrays could be better (depending on the big O notation - as smart people would say).
+This repository is a bit of a work in progress - scrapbook of my trials, testng and - mostly- having fun doing it. All the data types are integrated as lists, even though in some cases maybe arrays could be better (depending on the big O notation - as smart people would say). All trials on algorithms are intead integrated using arrays.
 
-
-
-AC
 
 ###Dispensers
 Containers that are not traversable (no access) are also called dispensers.
@@ -100,7 +98,7 @@ Some tips on the implementation:
 
 * it has a head method, that indicates if the list is empty.
 
-####Sorting
+###Sorting algorithms
 **Bubble sorting**
 Quick and dirty implementation of bubble sorting in TDD. Bubble makes multiple passes on the array and swaps elements if they are out of ourder. Being Big Oh of n2, is not that groovy though.
 
@@ -114,8 +112,16 @@ Still in the O(n2), this is supposed to be the way people sort paper (interestin
 This seems like a very pretty but recoursive inseriton sorting, with starting value decreasing from size/9 by one third at the time.
 
 **merge sort**
-We are talking real business, divide and conquer (*divide et impera*) Caesar style. Recursive implementation, splitting the array in half until it is a size 1. A size 1 is sorted by definition. Then combine in gradually bigger arrays, that you can traverse in one direction one time only. Proper stuff. 
+Divide and conquer style (*divide et impera*) Caesar style. Recursive implementation, splitting the array in half until it is a size 1. A size 1 is sorted by definition. Then combine in gradually bigger arrays, that you can traverse in one direction one time only. Proper stuff. O(nlog(n))
 
+**quick sort**
+We are talking real business now (apparenty professionals use this sort of sorting algorithm). 
+
+*Choose a random point in the array, that will be the pivot. Does not need to be in the middle really, as it depends on the value that it has.
+* From either ends you start scanning the array. As you find one value on the left that is greater than the pivot and one on the right that is smaller, you switch them. When one of the cursors reaches the pivot, you let it stay there. This is also called the partitioning function.
+* Recursively call the partitioning function on either sides of the array.
+
+It's a O(nlog(n)) grulli.
 
 
 [website0]: http://w3.cs.jmu.edu/spragunr/CS240/ConciseNotes.pdf
