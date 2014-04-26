@@ -70,4 +70,42 @@ class ArraySorting
 		array		
 	end
 
+	def merge_sort!
+		@array = merge_sort(@array)
+		@array
+	end
+
+
+	def merge_sort(a)
+		return a if a.size == 1
+		left_a, right_a = split_array(a)		
+		left_a = merge_sort(left_a)
+		right_a = merge_sort(right_a)
+		combine(left_a, right_a)
+	end
+
+	def combine(left_a, right_a)
+		a = []
+		while left_a.size > 0 && right_a.size > 0
+			if left_a.first < right_a.first
+				a << left_a.shift
+			else
+				a << right_a.shift
+			end
+		end
+
+		if left_a.empty? && !right_a.empty?
+			right_a.each {|i| a << i}
+		elsif !left_a.empty? && right_a.empty?
+			left_a.each {|i| a << i}
+		end
+		a
+	end
+
+
+	def split_array(a)
+		mid = (a.size / 2).round
+		[a.take(mid), a.drop(mid)]
+	end
+
 end

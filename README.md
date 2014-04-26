@@ -113,8 +113,8 @@ Still in the O(n2), this is supposed to be the way people sort paper (interestin
 **shell sorting**
 This seems like a very pretty but recoursive inseriton sorting, with starting value decreasing from size/9 by one third at the time.
 
-
-
+**merge sort**
+We are talking real business, divide and conquer (*divide et impera*) Caesar style. Recursive implementation, splitting the array in half until it is a size 1. A size 1 is sorted by definition. Then combine in gradually bigger arrays, that you can traverse in one direction one time only. Proper stuff. 
 
 
 
