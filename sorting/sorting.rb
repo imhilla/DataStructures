@@ -119,16 +119,24 @@ class ArraySorting
 		pivot = rand(0..(a.size-1))
 		left = 0
 		right = a.size - 1
-		while left <= pivot && right >= pivot 
+		while left != pivot || right != pivot
 			if a[left] < a[pivot]
-				left += 1
+				left += 1 unless left == pivot 
 			else
 				if a[right] > a[pivot]
-					right -= 1
+					right -= 1 unless right == pivot
 				else
 					a[left], a[right] = a[right], a[left]
-					left += 1
-					right -= 1
+					if pivot == left
+						pivot = right
+						left += 1						
+					elsif pivot == right
+						pivot = left
+						right -= 1
+					else
+						left += 1
+						right -= 1
+					end
 				end
 			end	
 		end
