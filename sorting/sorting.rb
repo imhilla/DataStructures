@@ -123,7 +123,7 @@ class ArraySorting
 			if a[left] < a[pivot]
 				left += 1
 			else
-				if a[right] >= a[pivot]
+				if a[right] > a[pivot]
 					right -= 1
 				else
 					a[left], a[right] = a[right], a[left]
