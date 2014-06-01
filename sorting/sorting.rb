@@ -142,5 +142,42 @@ class ArraySorting
 		end
 		partition(a.take(pivot))+partition(a.drop(pivot))
 	end
+
+
+	def heapsort!
+		heapify!(array.length)
+		array
+	end
+
+	def heapify! max_position
+		cursor_position = 1
+
+		while cursor_position < max_position
+
+			current_element = cursor_position
+			parent_position = (current_element ) / 2
+
+			while parent_position > 0
+
+				if array[current_element] > array[parent_position]
+					array[current_element], array[parent_position] = array[parent_position], array[current_element]
+				end
+
+				current_element = parent_position
+				parent_position = (parent_position ) / 2
+
+				# I really think the definition of parents that it is given in the notes is wrong!!
+
+			end
+
+			cursor_position += 1
+		end
+	end
+
+
 end
 
+a = [10, 8, 5, 1]
+Ar = ArraySorting.new a
+
+pry
