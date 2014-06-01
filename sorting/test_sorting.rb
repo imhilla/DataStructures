@@ -3,11 +3,11 @@ require 'minitest/autorun'
 require 'minitest/benchmark'
 require_relative 'sorting.rb'
 
-describe ArraySorting do 
+describe Array do 
 	before :each do
 		@max = 100
 		@number_of_tests = @max / 3
-		@array = ArraySorting.new [*0..@max].shuffle
+		@array = [*0..@max].shuffle
 	end
 
 	class MiniTest::Unit::TestCase
@@ -17,7 +17,7 @@ describe ArraySorting do
 	end
 
 	it 'bubble sorts trough arrays' do
-		@sorted_array = @array.bubble_sort!
+		@sorted_array = @array.bubble_sort
 		(@max / @number_of_tests).times do 
 			i = rand(0..@max)
 			@sorted_array[i].must_equal i
@@ -25,7 +25,7 @@ describe ArraySorting do
 	end
 
 	it 'selection sorts through arrays' do
-		@sorted_array = @array.selection_sort!
+		@sorted_array = @array.selection_sort
 		(@max / @number_of_tests).times do 
 			i = rand(0..@max)
 			@sorted_array[i].must_equal i
@@ -33,7 +33,7 @@ describe ArraySorting do
 	end
 
 	it 'does insertion sort' do
-		@sorted_array = @array.insertion_sort!
+		@sorted_array = @array.insertion_sort
 		(@max / @number_of_tests).times do 
 			i = rand(0..@max)
 			@sorted_array[i].must_equal i
@@ -41,8 +41,7 @@ describe ArraySorting do
 	end
 
 	it 'does shell sort' do
-		@sorted_array = @array.shell_sort!
-
+		@sorted_array = @array.shell_sort
 		(@max / @number_of_tests).times do 
 			i = rand(0..@max)
 			@sorted_array[i].must_equal i
@@ -50,7 +49,7 @@ describe ArraySorting do
 	end
 
 	it 'does merge sort' do
-		@sorted_array = @array.merge_sort!
+		@sorted_array = @array.merge_sort
 		(@max / @number_of_tests).times do 
 			i = rand(0..@max)
 			@sorted_array[i].must_equal i
@@ -58,7 +57,7 @@ describe ArraySorting do
 	end
 
 	it 'does quick sort' do
-		@sorted_array = @array.quick_sort!
+		@sorted_array = @array.quick_sort
 		(@max / @number_of_tests).times do 
 			i = rand(0..@max)
 			@sorted_array[i].must_equal i
@@ -69,8 +68,8 @@ describe ArraySorting do
 		validation = Proc.new {|range, time|}
 		assert_performance validation do |n|
 			n.times do
-	   	    	 @array.bubble_sort!
-   			     @array.array = [*0..@max].shuffle
+	   	    	 @array.bubble_sort
+   			     @array = [*0..@max].shuffle
    			end
    		 end
 	end
@@ -80,8 +79,8 @@ describe ArraySorting do
 		validation = Proc.new {|range, time|}
 		assert_performance validation do |n|
 			 n.times do
-   	    	 	@array.shell_sort!
-   		     	@array.array = [*0..@max].shuffle
+   	    	 	@array.shell_sort
+   		     	@array = [*0..@max].shuffle
    		     end
    		 end
 	end
@@ -91,8 +90,8 @@ describe ArraySorting do
 		validation = Proc.new {|range, time|}
 		assert_performance validation do |n|
    	    	 n.times do
-	   	    	 @array.quick_sort!
-   			     @array.array = [*0..@max].shuffle   	    	 
+	   	    	 @array.quick_sort
+   			     @array = [*0..@max].shuffle   	    	 
    	    	 end	
    		 end
 
@@ -103,8 +102,8 @@ describe ArraySorting do
 		validation = Proc.new {|range, time|}
 		assert_performance validation do |n|
 			n.times do
-	   	    	 @array.quick_sort!
-   			     @array.array = [*0..@max].shuffle
+	   	    	 @array.quick_sort
+   			     @array = [*0..@max].shuffle
    			 end
    		end
 	end

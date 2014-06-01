@@ -1,13 +1,9 @@
 require 'pry'
 
-class ArraySorting
-	attr_accessor :array
+module Enumerable
 
-	def initialize array
-		@array = array
-	end
-
-	def bubble_sort!
+	def bubble_sort
+		array = self
 		(array.size-1).downto(1).each do |j|
 			(1).upto(j).each do |i|
 				if array[i] < array[i-1]
@@ -18,7 +14,8 @@ class ArraySorting
 		array
 	end
 
-	def selection_sort!
+	def selection_sort
+		array = self
 		(array.size-1).downto(1).each do |j|
 			max_index = j
 			0.upto(j).each do |i|
@@ -31,24 +28,12 @@ class ArraySorting
 		array
 	end
 
-	def insertion_sort!
-		insertion_sort(1)
+	def insertion_sort
+		insert_sort(1)
 	end
 
-
-	def shell_sort!
-
-		h = 1
-		h = 3*h + 1 while h < array.size/9
-
-		while h > 0 do
-			insertion_sort(h)
-			h /= 3
-		end
-		array
-	end
-
-	def insertion_sort(start)
+	def insert_sort(start)
+		array = self
 		start.upto(array.size-1).each do |j|
 			inserting_value = array[j]
 			shifting = false
@@ -70,18 +55,38 @@ class ArraySorting
 		array		
 	end
 
-	def merge_sort!
-		@array = merge_sort(@array)
+
+	def shell_sort
+		array = self
+		h = 1
+		h = 3*h + 1 while h < array.size/9
+		while h > 0 do
+			insert_sort(h)
+			h /= 3
+		end
+		array
+	end
+
+
+
+	def merge_sort
+		@array = merge_sort_recoursive(self)
 		@array
 	end
 
 
-	def merge_sort(a)
+	def merge_sort_recoursive(a)
 		return a if a.size == 1
 		left_a, right_a = split_array(a)		
-		left_a = merge_sort(left_a)
-		right_a = merge_sort(right_a)
+		left_a = merge_sort_recoursive(left_a)
+		right_a = merge_sort_recoursive(right_a)
 		combine(left_a, right_a)
+	end
+
+
+	def split_array(a)
+		mid = (a.size / 2).round
+		[a.take(mid), a.drop(mid)]
 	end
 
 	def combine(left_a, right_a)
@@ -93,7 +98,6 @@ class ArraySorting
 				a << right_a.shift
 			end
 		end
-
 		if left_a.empty? && !right_a.empty?
 			right_a.each {|i| a << i}
 		elsif !left_a.empty? && right_a.empty?
@@ -103,15 +107,10 @@ class ArraySorting
 	end
 
 
-	def split_array(a)
-		mid = (a.size / 2).round
-		[a.take(mid), a.drop(mid)]
-	end
 
 
-	def quick_sort!
-		@array = partition(array)
-		array
+	def quick_sort
+		partition(self)
 	end
 
 	def partition(a)
@@ -144,40 +143,44 @@ class ArraySorting
 	end
 
 
-	def heapsort!
-		heapify!(array.length)
-		array
-	end
+	# def heapsort!
+	# 	heapify!(array.length)
+	# 	array
+	# end
 
-	def heapify! max_position
-		cursor_position = 1
+	# def heapify! max_position
+	# 	cursor_position = 1
 
-		while cursor_position < max_position
+	# 	while cursor_position < max_position
 
-			current_element = cursor_position
-			parent_position = (current_element ) / 2
+	# 		current_element = cursor_position
+	# 		parent_position = (current_element ) / 2
 
-			while parent_position > 0
+	# 		while parent_position > 0
 
-				if array[current_element] > array[parent_position]
-					array[current_element], array[parent_position] = array[parent_position], array[current_element]
-				end
+	# 			if array[current_element] > array[parent_position]
+	# 				array[current_element], array[parent_position] = array[parent_position], array[current_element]
+	# 			end
 
-				current_element = parent_position
-				parent_position = (parent_position ) / 2
+	# 			current_element = parent_position
+	# 			parent_position = (parent_position ) / 2
 
-				# I really think the definition of parents that it is given in the notes is wrong!!
+	# 			# I really think the definition of parents that it is given in the notes is wrong!!
 
-			end
+	# 		end
 
-			cursor_position += 1
-		end
-	end
+	# 		cursor_position += 1
+	# 	end
+	# end
 
 
 end
 
-a = [10, 8, 5, 1]
-Ar = ArraySorting.new a
+class Array
+	include Enumerable
+end
 
-pry
+# a = [10, 8, 5, 1]
+# Ar = ArraySorting.new a
+
+# pry
