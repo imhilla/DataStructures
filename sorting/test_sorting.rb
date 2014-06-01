@@ -64,6 +64,14 @@ describe Array do
 		end
 	end
 
+	it 'does heapsort' do
+		@sorted_array = @array.heapsort
+		(@max / @number_of_tests).times do 
+			i = rand(0..@max)
+			@sorted_array[i].must_equal i
+		end
+	end	
+
 	it ' benchmarks bubble sort' do
 		validation = Proc.new {|range, time|}
 		assert_performance validation do |n|
@@ -97,7 +105,6 @@ describe Array do
 
 	end
 
-
 	it 'benchmarks quick sort' do
 		validation = Proc.new {|range, time|}
 		assert_performance validation do |n|
@@ -107,6 +114,17 @@ describe Array do
    			 end
    		end
 	end
+
+	it 'benchmarks heapsort' do
+		validation = Proc.new {|range, time|}
+		assert_performance validation do |n|
+			n.times do
+	   	    	 @array.heapsort
+   			     @array = [*0..@max].shuffle
+   			 end
+   		end
+	end
+
 
 end
 

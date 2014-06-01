@@ -143,36 +143,61 @@ module Enumerable
 	end
 
 
-	# def heapsort!
-	# 	heapify!(array.length)
-	# 	array
-	# end
+	def heapsort
+		array = heapify
+		i = array.length - 1
+		while i > 0
+			array[0], array[i] = array[i], array[0]
+			array = check_heap(array.take(i)) + array.drop(i)
+			i -= 1
+		end
+		array
+	end
 
-	# def heapify! max_position
-	# 	cursor_position = 1
+	def heapify
+		array = self
+		cursor_position = 1
+		while cursor_position < array.length
+			current_element = cursor_position
+			parent_position = (current_element -1) / 2
+			while parent_position >= 0
+				if array[current_element] > array[parent_position]
+					array[current_element], array[parent_position] = array[parent_position], array[current_element]
+				end
+				current_element = parent_position
+				parent_position = (parent_position -1) / 2
+			end
+			cursor_position += 1
+		end
+		array
+	end
 
-	# 	while cursor_position < max_position
+	def check_heap array
+		i = 0
+		leaf1 = 1
+		leaf2 = 2		
+		while leaf1 < array.length && leaf2 < array.length
+			if  array[leaf1] > array[i] && array[leaf1] > array[leaf2] 
+				array[i], array[leaf1] = array[leaf1], array[i]
+				i = leaf1
+			elsif array[leaf2] > array[i] && array[leaf2] > array[leaf1]
+				array[i], array[leaf2] = array[leaf2], array[i]
+				i = leaf2
+			else
+				break
+			end
 
-	# 		current_element = cursor_position
-	# 		parent_position = (current_element ) / 2
 
-	# 		while parent_position > 0
-
-	# 			if array[current_element] > array[parent_position]
-	# 				array[current_element], array[parent_position] = array[parent_position], array[current_element]
-	# 			end
-
-	# 			current_element = parent_position
-	# 			parent_position = (parent_position ) / 2
-
-	# 			# I really think the definition of parents that it is given in the notes is wrong!!
-
-	# 		end
-
-	# 		cursor_position += 1
-	# 	end
-	# end
-
+			leaf1 = 2 * i + 1
+			leaf2 = 2 * i + 2
+		end
+		if leaf1 < array.length
+			if array[i] < array[leaf1]
+				array[i], array[leaf1] = array[leaf1], array[i]
+			end
+		end
+		array
+	end
 
 end
 
@@ -180,7 +205,7 @@ class Array
 	include Enumerable
 end
 
-# a = [10, 8, 5, 1]
-# Ar = ArraySorting.new a
+# a = [*0..10].shuffle
 
 # pry
+
