@@ -1,7 +1,7 @@
 ###Personal notes, scruff trials and similar on 
 ##Data structures and Algorithms
 
-In my quest for knowledge and wisdom in the realm of web development ad Ruby on Rails, I stumbled across the "Concise Notes on Data Structures and Algorithms - Ruby Edition" by Christopher Fox of James Madison University [link][website0].
+In my quest for knowledge and wisdom in the realm of web development and Ruby on Rails, I stumbled across the "Concise Notes on Data Structures and Algorithms - Ruby Edition" by Christopher Fox of James Madison University [link][website0].
 
 It seemed to me like a fine read to deepen my knowledge fo data structures.  In some cases you can tell Christopher is more into some other languages (the use of calem case ILO snake case, the lack of real OOD as per [Sandi Metz bible][website1]), but this does not defeat the purpose of the notes. They are pretty awesomem and deserve some good time reading.
 
